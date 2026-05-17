@@ -99,10 +99,10 @@
       padding: 0.85rem 2.2rem;
       font-size: 1rem;
     }.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
-  .hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;}
-  .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0d0d0d;border-bottom:1px solid var(--border);flex-direction:column;align-items:center;gap:1.4rem;padding:2rem;z-index:99;}
-  .mobile-menu.open{display:flex;}
-  .mobile-menu a{font-size:1rem;color:var(--white);font-weight:600;}
+  .hamburger span{width:24px;height:2px;background:var(--off-black);border-radius:2px;}
+  .mobile-menu { display:none; position:fixed; top:var(--nav-h); left:0; right:0; background:#0d0d0d; border-bottom:1px solid var(--border); flex-direction:column; align-items:center; gap:1.5rem; padding:2rem; z-index:99; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-size:1rem; color:var(--white); }
 
   section{padding:5rem 5%;}
   .section-label{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:0.6rem;}
@@ -234,20 +234,19 @@
   .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
   .reveal.visible{opacity:1;transform:none;}
   @media(max-width:900px){
-    .nav-links,.nav-cta{display:none;}
-    .hamburger{display:flex;}
-    .news-layout{grid-template-columns:1fr;}
-    .news-sidebar{position:static;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
-    .newsletter-inner{flex-direction:column;align-items:flex-start;}
+    .nav-links,.nav-cta { display:none; }
+    .hamburger { display:flex; }
+    .how-layout { grid-template-columns:1fr; }
+    .roles-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
   }
   @media(max-width:600px){
-    .footer-grid{grid-template-columns:1fr;}
-    .footer-bottom{flex-direction:column;text-align:center;}
-    .newsletter-form{flex-direction:column;width:100%;}
-    .newsletter-input{min-width:unset;width:100%;}
-    .modal{padding:1.8rem 1.3rem;}
-    .dash-banner{left:1rem;right:1rem;max-width:none;bottom:1rem;}
+    .hero-stats { gap:1.5rem; }
+    .stat-divider { display:none; }
+    .footer-grid { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+    .modal { padding:1.8rem 1.3rem; }
+    .dash-banner { left:1rem; right:1rem; max-width:none; bottom:1rem; }
   }
 </style>
 </head>
