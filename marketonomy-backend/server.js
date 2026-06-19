@@ -1,26 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+
+const envPath = path.join(__dirname, '.env');
+const envFile = fs.readFileSync(envPath, 'utf8');
+envFile.split('\n').forEach(line => {
+  const [key, ...rest] = line.split('=');
+  if (key && rest.length) process.env[key.trim()] = rest.join('=').trim();
+});
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
-// Temporary hardcoded config (we'll move back to .env after fixing)
-const CONFIG = {
-  PORT: 5000,
-  MONGO_URI: 'mongodb+srv://marketonomy_admin:MARKETONOMY@cluster0.gxfjbnc.mongodb.net/?appName=Cluster0',
-  EMAIL_USER: 'marketonomyorganisation@gmail.com',
-  EMAIL_PASS: 'eytybdiitoqwirep',  
-  NOTIFY_EMAIL: 'marketonomyorganisation@gmail.com'
-};
-
-// Make it available like process.env
-process.env.PORT = CONFIG.PORT;
-process.env.MONGO_URI = CONFIG.MONGO_URI;
-process.env.EMAIL_USER = CONFIG.EMAIL_USER;
-process.env.EMAIL_PASS = CONFIG.EMAIL_PASS;
-process.env.NOTIFY_EMAIL = CONFIG.NOTIFY_EMAIL;
+app.post('/api/test', (req, res) => {
+  console.log('🔥 TEST ROUTE HIT');
+  res.json({ ok: true });
+});
 
 // Routes
 app.use('/api', require('./routes/register'));
