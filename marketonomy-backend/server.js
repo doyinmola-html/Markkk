@@ -21,20 +21,18 @@ app.use(cors({
 app.use(express.json());
 
 app.post('/api/test', (req, res) => {
-  console.log('🔥 TEST ROUTE HIT');
+  console.log('TEST ROUTE HIT');
   res.json({ ok: true });
 });
 
-// Routes
 app.use('/api', require('./routes/register'));
 app.use('/api', require('./routes/login'));
 
-// DB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('✅ MongoDB connected');
+    console.log('MongoDB connected');
     app.listen(process.env.PORT, () => {
-      console.log(`🚀 Server running on port ${process.env.PORT}`);
+      console.log(`Server running on port ${process.env.PORT}`);
     });
   })
-  .catch(err => console.error('❌ DB connection error:', err));
+  .catch(err => console.error('DB connection error:', err));
