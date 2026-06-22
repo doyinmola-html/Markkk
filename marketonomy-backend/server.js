@@ -2,11 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 const envPath = path.join(__dirname, '.env');
-const envFile = fs.readFileSync(envPath, 'utf8');
-envFile.split('\n').forEach(line => {
-  const [key, ...rest] = line.split('=');
-  if (key && rest.length) process.env[key.trim()] = rest.join('=').trim();
-});
+if (fs.existsSync(envPath)) {
+  const envFile = fs.readFileSync(envPath, 'utf8');
+  envFile.split('\n').forEach(line => {
+    const [key, ...rest] = line.split('=');
+    if (key && rest.length) process.env[key.trim()] = rest.join('=').trim();
+  });
+}
 
 const express = require('express');
 const mongoose = require('mongoose');
