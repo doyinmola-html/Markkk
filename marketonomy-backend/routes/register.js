@@ -30,10 +30,10 @@ router.post('/register', async (req, res) => {
     const user = new User({ name, email: email.toLowerCase(), password: pass, role, skill });
     await user.save();
 
-    // Send email notification (non-blocking)
-    sendRegistrationAlert({ name, email, role, skill })
-      .catch(err => console.error('Email notification failed:', err.message));
-
+    //// Send email notification (non-blocking)
+sendRegistrationAlert({ name, email, role, skill })
+  .then(() => console.log('✅ Email notification sent successfully'))
+  .catch(err => console.error('❌ Email notification failed:', err.message));
     res.status(201).json({ message: 'Registration successful', user: { name, email, role, skill } });
 
   } catch (err) {
