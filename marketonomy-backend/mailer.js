@@ -1,10 +1,5 @@
 async function sendRegistrationAlert(user) {
-  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'api-key': process.env.BREVO_API_KEY
-    },
+  console.log('BREVO_API_KEY:', process.env.BREVO_API_KEY ? 'Found (' + process.env.BREVO_API_KEY.substring(0, 10) + '...)' : 'NOT FOUND');
     body: JSON.stringify({
       sender: { name: 'Marketonomy', email: process.env.NOTIFY_EMAIL },
       to: [{ email: process.env.NOTIFY_EMAIL }],
