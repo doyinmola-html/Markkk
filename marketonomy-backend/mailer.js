@@ -10,7 +10,7 @@ console.log('Sending from:', 'af9459001@smtp-brevo.com');
       'api-key': process.env.BREVO_API_KEY
     },
     body: JSON.stringify({
-      sender: { name: 'Marketonomy', email: process.env.NOTIFY_EMAIL },
+     sender: { name: 'Marketonomy', email: 'marketonomyorganisation@gmail.com' },
       to: [{ email: process.env.NOTIFY_EMAIL }],
       subject: `New ${user.role} Registered on Marketonomy`,
       htmlContent: `<div style="font-family:Arial,sans-serif;padding:30px;">
