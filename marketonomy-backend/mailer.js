@@ -1,5 +1,7 @@
 async function sendRegistrationAlert(user) {
   console.log('BREVO_API_KEY starts with:', process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.substring(0, 15) : 'NOT FOUND');
+  console.log('Sending notification to:', process.env.NOTIFY_EMAIL);
+console.log('Sending from:', 'af9459001@smtp-brevo.com');
 
   const response = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
